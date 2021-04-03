@@ -1,0 +1,12 @@
+﻿using Borsa.DataAccess.Abstract;
+using Borsa.Entities;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Borsa.DataAccess.Concrete.EfCore
+{
+    public class EfContactRepository : EfGenericRepository<Contact,BorsaContext>, IContactRepository
+    {
+    }
+}

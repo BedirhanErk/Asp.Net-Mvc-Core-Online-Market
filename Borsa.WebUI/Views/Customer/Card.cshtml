@@ -1,0 +1,45 @@
+﻿@model CustomerCardListModel
+@{
+    ViewData["Title"] = "Card";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="about">
+        <div class="container">
+            <h3 class="w3_agile_header">
+                My Card
+                <a class="ml-1 btn" style="position:absolute;right:18px;width:125px;background-color:#fe9126;color:white" asp-controller="Customer" asp-action="CreateCard">Add <i style="margin-left:5px" class="fas fa-plus"></i></a>
+                <a class="btn btn-primary" style="position:absolute;right:153px;width:125px" asp-controller="Customer" asp-action="Profile">Profile <i style="margin-left:5px" class="fas fa-backward"></i></a>
+            </h3>
+            <div class="about-agileinfo w3layouts">
+                @foreach (var x in Model.CustomerCards)
+                {
+                    <div class="col-md-3 about-wthree-grids" style="margin-bottom:25px">
+                        <div class="offic-time">
+                            <div class="time-top">
+                                <h4>@x.CardTitle :</h4>
+                            </div>
+                            <div class="time-bottom">
+                                <h5>@x.CardName</h5>
+                                <p>@x.CardNumber </p>
+                                <p>@x.ExpirationMonth/@x.ExpirationYear </p>
+                                <p>@x.Cvv </p>
+                                <p>
+                                    <a asp-controller="Customer" asp-action="DeleteCard" asp-route-id="@x.Id"><i style="" class="fas fa-trash"></i></a>
+                                    <a class="btn btn-outline-primary" asp-controller="Customer" asp-action="UpdateCard" asp-route-id="@x.Id">Edit Card</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

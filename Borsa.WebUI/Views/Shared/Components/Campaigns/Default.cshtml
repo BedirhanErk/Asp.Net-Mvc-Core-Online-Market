@@ -1,0 +1,20 @@
+﻿@model CampaignsListModel
+
+
+@if (Model.Campaigns.Count == 0)
+{
+    <div class="margin-bottom:35px">
+        <h4 style="margin-bottom:35px">--- We currently do not have a campaign or announcement defined for you. ---</h4>
+    </div>
+}
+else
+{
+    <div class="margin-bottom:35px" style="color:white">
+        @{ int i = 0;}
+        @foreach (var x in Model.Campaigns)
+        {
+            <h4 style="margin-bottom:35px">@{ i++;} @i. @x.Description</h4>
+        }
+    </div>
+}
+

@@ -1,0 +1,69 @@
+﻿@model CustomerAddressModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="about">
+        <div class="container">
+            <h3 class="w3_agile_header">Update address</h3>
+            <div class="about-agileinfo w3layouts">
+                <form asp-controller="Customer" asp-action="Update" method="post">
+                    <input type="hidden" name="categoryId" value="@Model.Id" />
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">Address Title</label>
+                        <div class="col-md-10">
+                            <input asp-for="AddressTitle" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">First Name</label>
+                        <div class="col-md-10">
+                            <input asp-for="FirstName" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">Last Name</label>
+                        <div class="col-md-10">
+                            <input asp-for="LastName" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">Address</label>
+                        <div class="col-md-10">
+                            <textarea asp-for="Address" class="form-control" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">City</label>
+                        <div class="col-md-10">
+                            <input asp-for="City" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">District</label>
+                        <div class="col-md-10">
+                            <input asp-for="District" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row" style="margin-bottom:15px">
+                        <label class="col-form-label col-md-2" style="margin-bottom:10px">Phone</label>
+                        <div class="col-md-10">
+                            <input asp-for="Phone" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-10" style="margin-left:195px">
+                            <button type="submit" value="Create" class="btn btn-primary" style="width:100px">Update</button>
+                            <a asp-action="Address" asp-controller="Customer" class="btn btn-warning" value="Cancel" style="width:100px">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

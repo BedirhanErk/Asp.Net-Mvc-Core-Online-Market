@@ -1,0 +1,66 @@
+﻿@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+@section Scrpts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="register">
+        <div class="container">
+            <h2>Register Here</h2>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="text-danger">@ViewBag.ErrorMessage</div>
+            }
+
+            <div class="login-form-grids">
+                <h5>profile information</h5>
+                <form asp-controller="Account" asp-action="Register" method="post">
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <input asp-for="FullName" value="@Model.FullName" class="form-control" placeholder="Full Name..." />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+
+                    <input asp-for="PhoneNumber" value="@Model.PhoneNumber" class="form-control" placeholder="PhoneNumber..." />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                    <input asp-for="UserName" value="@Model.UserName" style="margin-top:15px" class="form-control" placeholder="User Name..." />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+
+
+
+                    <h6>Login information</h6>
+
+                    <input asp-for="Email" value="@Model.Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+
+                    <input asp-for="Password" value="@Model.Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+
+                    <input asp-for="RePassword" value="@Model.RePassword" class="form-control" placeholder="Password Confirmation" />
+                    <span asp-validation-for="RePassword" class="text-danger"></span>
+
+                    <input type="submit" value="Register">
+
+                </form>
+            </div>
+            <div class="register-home">
+                <a href="/HomePage/Index">Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

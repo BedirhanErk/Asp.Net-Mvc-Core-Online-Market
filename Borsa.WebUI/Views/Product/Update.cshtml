@@ -1,0 +1,120 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    var counter = 0;
+}
+
+
+@section Scrpts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("editör");
+    </script>
+}
+
+
+
+<form asp-controller="Product" asp-action="Update" method="post" enctype="multipart/form-data" class="col-md-11 mt-3 ml-3">
+    <h2 class="mb-3">Update Product</h2>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-9">
+            <input type="hidden" name="productId" value="@Model.Id" />
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Product Name</label>
+                <div class="col-md-10">
+                    <input asp-for="Name" value="@Model.Name" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Brand</label>
+                <div class="col-md-10">
+                    <input asp-for="Brand" value="@Model.Brand" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Image</label>
+                <div class="col-md-10">
+                    <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+                    <img src="~/img/@Model.ImageUrl" width="100" />
+                    <input type="file" name="file" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Description</label>
+                <div class="col-md-10">
+                    <textarea class="form-control" id="editör" asp-for="Description">@Model.Description</textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Stock</label>
+                <div class="col-md-10">
+                    <input asp-for="Stock" value="@Model.Stock" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Price</label>
+                <div class="col-md-10">
+                    <input asp-for="Price" value="@Model.Price" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-md-2 col-form-label">Discounted Price</label>
+                <div class="col-md-10">
+                    <input asp-for="DiscountedPrice" value="@Model.DiscountedPrice" class="form-control" />
+                </div>
+            </div>
+            <div style="margin-left:130px">
+                <p style="color:red">Attention !!! If there is no discount, enter the same values ​​for the normal price and the discount price.</p>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-10 offset-md-2">
+                    <button type="submit" value="Create" class="btn btn-primary" style="width:100px">Update</button>
+                    <a asp-action="Index" asp-controller="Product" class="btn btn-warning" value="Cancel" style="width:100px">Cancel</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            @foreach (var x in (List<Category>)ViewBag.Categories)
+            {
+                var isChecked = "";
+                if (Model.SelectedCategories.Any(i => i.Id == x.Id))
+                {
+                    isChecked = "checked";
+                    <input type="hidden" name="SelectedCategories[@counter].Id" value="@x.Id" />
+                    <input type="hidden" name="SelectedCategories[@counter].Id" value="@x.Name" />
+
+                    counter++;
+                }
+                else
+                {
+                    isChecked = "";
+                }
+                <div class="form-check ml-3">
+                    <input class="form-check-input"
+                           name="categoryIds"
+                           type="checkbox" value="@x.Id"
+                           id="category@(x.Id)"
+                           @isChecked>
+                    <label class="form-check-label" for="category@(x.Id)">
+                        @x.Name
+                    </label>
+                </div>
+            }
+        </div>
+    </div>
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(
+        function () {
+            swal("Attention !!!", "If there is no discount, enter the same values ​​for the normal price and the discount price.", "info");
+        }
+    )
+</script>

@@ -1,0 +1,60 @@
+﻿@model RoleDetails
+@{
+    ViewData["Title"] = "Edit Roles";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+
+<form asp-action="Edit" method="post" class="col-md-12 mt-3 ml-2" >
+    <h2 class="mb-4">Update Role</h2>
+    <input type="hidden" name="RoleId" value="@Model.Role.Id" />
+    <input type="hidden" name="RoleName" value="@Model.Role.Name" />
+
+        <h4>
+            Add to @Model.Role.Name
+        </h4>
+        <table class="table table-bordered table-striped table-sm">
+            @if (Model.NonMembers.Count() == 0)
+            {
+                <tr><td colspan="2">All User Are Members</td></tr>
+            }
+            else
+            {
+                @foreach (var user in Model.NonMembers)
+                {
+                    <tr>
+                        <td width="750px">@user.UserName</td>
+                        <td><input type="checkbox" name="IdsToAdd" value="@user.Id" /></td>
+                    </tr>
+                }
+            }
+        </table>
+        
+        
+        <h4>
+            Delete from @Model.Role.Name
+        </h4>
+        <table class="table table-bordered table-striped table-sm">
+            @if (Model.Members.Count() == 0)
+            {
+                <tr><td colspan="2">No User Are Members</td></tr>
+            }
+            else
+            {
+                @foreach (var user in Model.Members)
+                {
+                    <tr>
+                        <td width="750px">@user.UserName</td>
+                        <td><input type="checkbox" name="IdsToDelete" value="@user.Id" /></td>
+                    </tr>
+                }
+            }
+        </table>
+
+    <button type="submit" class="btn btn-primary" style="width:100px">Save</button>
+    <a asp-action="Index" class="btn btn-warning" style="width:100px">Cancel</a>
+</form>
+

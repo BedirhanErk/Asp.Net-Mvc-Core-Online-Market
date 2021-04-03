@@ -1,0 +1,49 @@
+﻿<div class="navigation-agileits">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header nav_2">
+                <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/HomePage/Index" class="act">Home</a></li>
+                    <li><a href="/HomePage/ProductList">Products</a></li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li><a href="/Cart/Index">Carts</a></li>
+                        <li><a href="/Order/GetOrders">Orders</a></li>
+                    }
+
+                    <li><a href="/HomePage/AboutUs">About Us</a></li>
+                    <li><a href="/Contact/Create">Contact</a></li>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item" style="position:absolute;right:80px">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Customer" asp-action="Profile">@User.Identity.Name</a>
+                        </li>
+                        <li class="nav-item" style="position:absolute;right:0px">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item" style="margin-left:547px">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>

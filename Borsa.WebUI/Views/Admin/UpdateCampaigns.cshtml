@@ -1,0 +1,26 @@
+﻿@model CampaignsModel
+@{
+    ViewData["Title"] = "UpdateCampaigns";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2 class="mt-3 ml-3">Update Announcements</h2>
+
+<div class="col-md-12 mt-3 ml-2">
+    <form asp-controller="Admin" asp-action="UpdateCampaigns" method="post">
+        <input type="hidden" name="categoryId" value="@Model.Id" />
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Description</label>
+            <div class="col-md-10">
+                <textarea asp-for="Description" value="@Model.Description" class="form-control" ></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <button type="submit" value="Create" style="width:100px" class="btn btn-primary">Update</button>
+                <a asp-action="Campaigns" asp-controller="Admin" class="btn btn-warning" value="Cancel" style="width:100px">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

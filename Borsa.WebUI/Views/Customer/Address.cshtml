@@ -1,0 +1,42 @@
+﻿@model CustomerAddressListModel
+@{
+    ViewData["Title"] = "Address";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="about">
+        <div class="container">
+            <h3 class="w3_agile_header">
+                My Addresses
+                <a class="ml-1 btn" style="position:absolute;right:18px;width:125px;background-color:#fe9126;color:white" asp-controller="Customer" asp-action="Create">Add <i style="margin-left:5px" class="fas fa-plus"></i></a>
+                <a class="btn btn-primary" style="position:absolute;right:153px;width:125px" asp-controller="Customer" asp-action="Profile">Profile <i style="margin-left:5px" class="fas fa-backward"></i></a>
+            </h3>
+            <div class="about-agileinfo w3layouts">
+                @foreach (var x in Model.CustomerAddresses)
+                {
+                    <div class="col-md-6 about-wthree-grids" style="margin-bottom:25px">
+                        <div class="offic-time">
+                            <div class="time-top">
+                                <h4>@x.AddressTitle :</h4>
+                            </div>
+                            <div class="time-bottom">
+                                <h5>@x.FirstName @x.LastName </h5>
+                                <p>@x.Address </p>
+                                <p>@x.City/@x.District </p>
+                                <p>@x.Phone </p>
+                                <p><a  asp-controller="Customer" asp-action="Delete"  asp-route-id="@x.Id"><i style="" class="fas fa-trash"></i></a> 
+                                   <a class="btn btn-outline-primary" asp-controller="Customer" asp-action="Update" asp-route-id="@x.Id">Edit Address</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

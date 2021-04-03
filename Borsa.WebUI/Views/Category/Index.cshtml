@@ -1,0 +1,53 @@
+﻿@model CategoryListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 mb-4 mt-3 ml-1">
+    <h2 class="mb-4 ml-1">
+        Categories
+        <a href="/Category/Create" style="position:absolute;right:18px;width:100px" class="btn btn-primary ml-1">Add <i style="margin-left:5px" class="fas fa-plus"></i></a>
+    </h2>
+
+    @if (Model.Categories.Count > 0)
+    {
+        <table id="tbl1" class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th style="width:30px">Make it Passive</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Categories)
+                {
+                    <tr>
+                        <td><a href="/Category/Delete/@x.Id" class="text-danger" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to passive it?')"><strong>Passive</strong></a></td>
+                        <td><a asp-controller="Category" asp-action="Update" asp-route-id="@x.Id">@x.Id</a></td>
+                        <td><a asp-controller="Category" asp-action="Update" asp-route-id="@x.Id">@x.Name</a></td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning ">
+            <h4>NO PRODUCT</h4>
+        </div>
+    }
+</div>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

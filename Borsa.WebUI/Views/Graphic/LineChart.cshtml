@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewData["Title"] = "LineChart";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@*<h2 style="margin-left:300px">Brand - Stock Graphic</h2>*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("VisualizeProductResult2", "Graphic")',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Name');
+            data.addColumn('number', 'Stock');
+            var dataArray = [];
+            $.each(result, function (i, obj) {
+                dataArray.push([obj.brand,obj.stock]);
+            });
+            data.addRows(dataArray);
+            var columnChartOptions = {
+                title: "Brand - Stock Graphic",
+                width: 1020,
+                height: 765,
+                bar: { groupWidth: "20%" },
+            };
+            var columnChart = new google.visualization.LineChart(document
+                .getElementById('linechart_div'));
+            columnChart.draw(data, columnChartOptions);
+        }
+    </script>
+</head>
+<body>
+    <div id="linechart_div"></div>
+</body>
+</html>
+

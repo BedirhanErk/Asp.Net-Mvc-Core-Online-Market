@@ -1,0 +1,70 @@
+﻿@model List<OrderListModel>
+@{
+    ViewData["Title"] = "GetOrders";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1 style="margin-top:80px;margin-left:110px">Orders</h1>
+
+<div style="margin-right:100px;margin-left:110px">
+    @foreach (var x in Model)
+    {
+        <table class="table table-striped" style="margin-bottom:25px;margin-top:40px">
+            <thead>
+                <tr style="background-color: #fe9126;color: white">
+                    <th>Order :</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var y in x.OrderItems)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/img/@y.ImageUrl" width="50" />
+                        </td>
+                        <td>@y.Name</td>
+                        @if (y.DiscountedPrice == y.Price)
+                        {
+                            <td>@y.Price</td>
+                        }
+                        else
+                        {
+                            <td>@y.DiscountedPrice</td>
+                        }
+                        <td>@y.Qunatity</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Customer Name : </td>
+                    <td>@x.FirstName @x.LastName</td>
+                    <td><strong>Total:@x.TotalPrice() ₺</strong></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>@x.Address</td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td>@x.Phone</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>@x.Email</td>
+                </tr>
+                <tr>
+                    <td>Payment Status:</td>
+                    <td>@x.PaymentTypes</td>
+                </tr>
+                <tr>
+                    <td>Order Status:</td>
+                    <td>@x.OrderState</td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+@section Scrpts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="login">
+        <div class="container">
+            <h2>Login Form</h2>
+
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="text-danger">@ViewBag.ErrorMessage</div>
+            }
+
+            <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+                <form asp-controller="Account" asp-action="Login" method="post">
+
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+
+                    <input asp-for="Email" value="@Model.Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                    <input asp-for="Password" value="@Model.Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+            <h4>For New People</h4>
+            <p><a href="/Account/Register">Register Here</a> (Or) go back to <a href="/HomePage/Index">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+        </div>
+    </div>
+</body>
+</html>

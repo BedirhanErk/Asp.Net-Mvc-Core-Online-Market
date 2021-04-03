@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="col-md-12 mb-4 mt-3 ml-1">
+        <h2 class="mb-4 ml-1">Dashboard</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>@ViewBag.d1</h3>
+                            <p>Total Product</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-hamburger"></i>
+                        </div>
+                        <a href="/Product/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>@ViewBag.d2</h3>
+                            <p>Total Brand</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <a href="/Product/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>@ViewBag.d3</h3>
+                            <p>Critical Stock</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <a href="/Product/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>@ViewBag.d4</h3>
+                            <p>Total User</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <a href="/User/Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <h3 class="mb-4 ml-1">Edit Home Page</h3>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><a href="/Admin/HomeMonth"><i class="fas fa-calendar-alt"></i></a></span>
+                    <div class="info-box-content">
+                        <a href="/Admin/HomeMonth">
+                            <span class="info-box-text">Products of the</span>
+                            <span class="info-box-text"> month</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><a href="/Admin/HomeToday"><i class="fas fa-calendar-day"></i></a></span>
+                    <div class="info-box-content">
+                        <a href="/Admin/HomeToday">
+                            <span class="info-box-text">Today Offers</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix hidden-md-up"></div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-warning elevation-1"><a href="/Admin/HomePopular"><i class="fas fa-eye"></i></a></span>
+                    <div class="info-box-content">
+                        <a href="/Admin/HomePopular">
+                            <span class="info-box-text">Popular Product</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><a href="/Admin/HomeOffer"><i class="fas fa-play"></i></a></span>
+                    <div class="info-box-content">
+                        <a href="/Admin/HomeOffer">
+                            <span class="info-box-text">New Offers</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h3 class="mb-4 ml-1">Products</h3>
+        @await Component.InvokeAsync("AdminProduct")
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model ProductDetailsModel
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="products">
+        <div class="container">
+            <div class="agileinfo_single">
+                <div class="col-md-4 agileinfo_single_left">
+                    <form asp-controller="Cart" asp-action="AddToWishlist" method="post" style="display:inline">
+                        <input type="hidden" name="productId" value="@Model.Product.Id" />
+                        <button type="submit"><i class="fas fa-heart" style="color:red"></i></button>
+                    </form>
+                    <img id="example" src="~/img/@Model.Product.ImageUrl" alt=" " class="img-responsive">
+                </div>
+                <div class="col-md-8 agileinfo_single_right">
+                    <h2>@Model.Product.Name</h2>
+                    <h4>Brand: @Model.Product.Brand</h4>
+                    <div class="w3agile_description">
+                        <h4>Description :</h4>
+                        <p>
+                            @Html.Raw(Model.Product.Description)
+                        </p>
+                    </div>
+                    <div class="snipcart-item block">
+                        @if (Model.Product.DiscountedPrice == Model.Product.Price)
+                        {
+                            <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                                <h3 class="m-sing">@Model.Product.Price ₺</h3>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="snipcart-thumb agileinfo_single_right_snipcart">
+                                <h3 class="m-sing">@Model.Product.DiscountedPrice ₺<s style="color:grey;margin-left:15px">@Model.Product.Price ₺</s></h3>
+                            </div>
+                        }
+                        <form asp-controller="Cart" asp-action="AddToCart" method="post" class="form-inline">
+                            <input type="hidden" name="productId" value="@Model.Product.Id" />
+                            <div class="input-group mb-3">
+                                <input type="number" name="quantity" class="form-control" value="1" min="1" step="1" style="width:100px" />
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-cart-plus"></i> Add To Cart
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

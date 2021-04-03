@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Borsa.DataAccess\Borsa.DataAccess.csproj" />
+    <ProjectReference Include="..\Borsa.Entities\Borsa.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

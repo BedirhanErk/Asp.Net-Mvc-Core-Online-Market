@@ -1,0 +1,95 @@
+﻿@model Borsa.WebUI.Identity.ApplicationUser
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="about">
+        <div class="container">
+            <h3 class="w3_agile_header">My Profile</h3>
+            <div class="about-agileinfo w3layouts">
+                <div class="col-md-3">
+                    @if (Model.Image == null)
+                    {
+                        <div class="text-center" style="margin-bottom:15px">
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="~/img/user2.png"
+                                 alt="User profile picture"
+                                 style="width:200px;height:200px">
+                        </div>
+                        <h3 style="margin-bottom:10px" class="profile-username text-center">@Model.FullName</h3>
+                    }
+                    else
+                    {
+                        <div class="text-center" style="margin-bottom:15px">
+                            <img class="profile-user-img img-fluid img-circle"
+                                 src="~/img/@Model.Image"
+                                 alt="User profile picture"
+                                 style="width:200px;height:200px">
+                        </div>
+                        <h3 style="margin-bottom:10px" class="profile-username text-center">@Model.FullName</h3>
+                        <div class="text-center"><a style="margin-bottom:10px" asp-controller="Cart" asp-action="Wishlist" class="btn btn-warning">My Wish List</a></div>
+                        <div class="text-center"><a style="margin-bottom:10px" asp-controller="Customer" asp-action="Address" class="btn btn-primary text-center">My Addresses</a></div>
+                        <div class="text-center"><a asp-controller="Customer" asp-action="Card" class="btn btn-danger">My Cards</a></div>
+                    }
+                </div>
+                <div class="col-md-9">
+                    <form asp-controller="Customer" asp-action="Profile" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="userid" value="@Model.Id" />
+                        <div class="form-group row">
+                            <label class="col-form-label" style="margin-bottom:10px">Name*</label>
+                            <div class="">
+                                <input asp-for="FullName" value="@Model.FullName" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label" style="margin-bottom:10px">Email*</label>
+                            <div class="">
+                                <input asp-for="Email" value="@Model.Email" class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label" style="margin-bottom:10px">Phone Number*</label>
+                            <div class="">
+                                <input asp-for="PhoneNumber" value="@Model.PhoneNumber" class="form-control" required/>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label" style="margin-bottom:10px">Birthday</label>
+                            <div class="">
+                                <input asp-for="Birthday" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label" style="margin-bottom:10px">Image</label>
+                            <div class="" style="margin-bottom:5px">
+                                <input type="hidden" name="Image" value="@Model.Image" />
+                                <input type="file" name="file" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="">
+                                <button type="submit" value="Create" style="width:100px" class="btn btn-primary">Update</button>                              
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-slid agileits-w3layouts">
+        <div class="container">
+            <div class="about-slid-info">
+                <h2 style="margin-bottom:25px">Campaigns</h2>
+                <p>@await Component.InvokeAsync("Campaigns")</p>
+            </div>
+        </div>
+    </div>
+    @await Component.InvokeAsync("HomeOffer")
+</body>
+</html>

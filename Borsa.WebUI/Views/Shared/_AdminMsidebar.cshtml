@@ -1,0 +1,216 @@
+﻿<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/Admin/Dashboard" class="brand-link">
+        <img src="~/admin/dist/img/BorsaLogo.png" alt="Borsa" class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text font-weight-light ml-1">Borsa Market</span>
+    </a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header ml-2">TRANSACTİONS</li>
+                <li class="nav-item">
+                    <a href="/Admin/Dashboard" class="nav-link">
+                        <i class="nav-icon fas fa-desktop"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Category/Index" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Categories
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Product/Index" class="nav-link">
+                        <i class="nav-icon fas fa-tags"></i>
+                        <p>
+                            Products
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="/AdminRole/Index" class="nav-link">
+                        <i class="nav-icon fas fa-user-cog"></i>
+                        <p>
+                            Roles
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/User/Index" class="nav-link">
+                        <i class="nav-icon fas 	fa-user-tag"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Order/Index" class="nav-link">
+                        <i class="nav-icon fas 	fa-shopping-cart"></i>
+                        <p>
+                            Orders
+                        </p>
+                    </a>
+                </li>
+                @*<li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>
+                                Orders
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pending</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Unpaid</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Cargo</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Returned From Cargo</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Completed</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+                <li class="nav-item">
+                    <a href="/Admin/Campaigns" class="nav-link">
+                        <i class="nav-icon fas fa-bell"></i>
+                        <p>
+                            Announcements
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/Contact/Index" class="nav-link">
+                        <i class="nav-icon far fa-comments"></i>
+                        <p>
+                            Help Message
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/HomePage/Index" class="nav-link">
+                        <i class="nav-icon fas fa-backward"></i>
+                        <p>
+                            Go to the site
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-header">STATISTIC & GRAPHICS</li>
+
+                <li class="nav-item">
+                    <a href="/Statistic/Index" class="nav-link">
+                        <i class="nav-icon fas fa-chart-line"></i>
+                        <p>
+                            Statistic
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                            Graphics
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/Graphic/PieChart" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Pie Chart</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Graphic/LineChart" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Line Chart</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Graphic/ColumnChart" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Column Chart</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @*<li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-file-invoice-dollar"></i>
+                            <p>
+                                Invoice
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Invoice</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Print Invoice</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-dollar-sign"></i>
+                            <p>
+                                Sales
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Sales</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Print Sales</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+            </ul>
+        </nav>
+    </div>
+</aside>

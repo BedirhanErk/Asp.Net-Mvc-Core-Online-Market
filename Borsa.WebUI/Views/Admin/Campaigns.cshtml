@@ -1,0 +1,42 @@
+﻿@model CampaignsListModel
+@{
+    ViewData["Title"] = "Campaigns";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 mb-4 mt-3 ml-1">
+    <h2 class="mb-4 ml-1">
+        Announcements
+        <a href="/Admin/CreateCampaigns" style="position:absolute;right:18px;width:100px" class="btn btn-primary ml-1">Add <i style="margin-left:5px" class="fas fa-plus"></i></a>
+    </h2>
+
+    @if (Model.Campaigns.Count > 0)
+    {
+        <table id="tbl1" class="table table-bordered table-striped mt-3">
+            <thead>
+                <tr>
+                    <th style="width:30px">Delete</th>
+                    <th>Id</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Campaigns)
+                {
+                    <tr>
+                        <td><a href="/Admin/DeleteCampaigns/@x.Id" class="text-danger" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to delete it?')"><strong>X</strong></a></td>
+                        <td><a asp-controller="Admin" asp-action="UpdateCampaigns" asp-route-id="@x.Id">@x.Id</a></td>
+                        <td><a asp-controller="Admin" asp-action="UpdateCampaigns" asp-route-id="@x.Id">@x.Description</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning ">
+            <h4>NO ANNOUNCEMENT</h4>
+        </div>
+    }
+</div>
+

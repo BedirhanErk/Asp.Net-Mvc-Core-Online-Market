@@ -1,0 +1,100 @@
+﻿@model ProductModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Scrpts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace("editör");
+    </script>
+}
+
+<div class="col-md-11 mt-3 ml-3">
+    <h2 class="mb-4">Add a new product</h2>
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="text-danger">@ViewBag.ErrorMessage</div>
+    }
+
+
+    <form asp-controller="Product" asp-action="Create" method="post" enctype="multipart/form-data">
+
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Product Name</label>
+            <div class="col-md-10">
+                <input asp-for="Name" value="@Model.Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Brand</label>
+            <div class="col-md-10">
+                <input asp-for="Brand" value="@Model.Brand" class="form-control" />
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Image</label>
+            <div class="col-md-10">
+                <input type="hidden" name="ImageUrl" value="@Model.ImageUrl" />
+                <input type="file" name="file" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Description</label>
+            <div class="col-md-10">
+                <textarea class="form-control" id="editör" asp-for="Description">@Model.Description</textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Stock</label>
+            <div class="col-md-10">
+                <input asp-for="Stock" value="@Model.Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Price</label>
+            <div class="col-md-10">
+                <input asp-for="Price" value="@Model.Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Discounted Price</label>
+            <div class="col-md-10">
+                <input asp-for="DiscountedPrice" value="@Model.DiscountedPrice" class="form-control" />
+                <span asp-validation-for="DiscountedPrice" class="text-danger"></span>
+            </div>
+        </div>
+        <div style="margin-left:165px">
+            <p style="color:red">Attention !!! If there is no discount, enter the same values ​​for the normal price and the discount price.</p>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <button type="submit" value="Create" class="btn btn-primary" style="width:100px">Create</button>
+                <a asp-action="Index" asp-controller="Product" class="btn btn-warning" value="Cancel" style="width:100px">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(
+        function () {
+            swal("Attention !!!", "If there is no discount, enter the same values ​​for the normal price and the discount price.", "info");
+        }
+    )
+</script>

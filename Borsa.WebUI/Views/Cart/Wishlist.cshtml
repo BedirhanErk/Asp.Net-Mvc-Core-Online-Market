@@ -1,0 +1,60 @@
+﻿@model CartModel
+@{
+    ViewData["Title"] = "Wishlist";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="about">
+        <div class="container">
+            <h3 class="w3_agile_header">
+                My Wish List
+                <a class="ml-1 btn btn-primary" style="position:absolute;right:0px;width:125px" asp-controller="Customer" asp-action="Profile">Profile <i style="margin-left:5px" class="fas fa-backward"></i></a>
+            </h3>
+            <div class="about-agileinfo w3layouts">
+                @if (Model.WishlistModels.Count > 0)
+                {
+                    <div class="checkout-right">
+                        <table class="timetable_sub">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            @foreach (var x in Model.WishlistModels)
+                            {
+                                <tr class="rem1">
+                                    <td class="invert-image"><a href="/HomePage/ProductDetails/@x.ProductId"><img src="~/img/@x.ImageUrl" alt=" " style="width:25%" class="img-responsive" /></a></td>
+                                    <td><a href="/HomePage/ProductDetails/@x.ProductId">@x.Name</a></td>
+                                    <td class="invert">@x.DiscountedPrice ₺</td>
+                                    <td>
+                                        <form asp-controller="Cart" asp-action="DeleteFromWishList" method="post">
+                                            <input type="hidden" name="productId" value="@x.ProductId" />
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-times fa-fw"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        Your Wish List is Empty!!!
+                    </div>
+                    <a href="/HomePage/ProductList" class="btn btn-primary">Continue shopping</a>
+                }
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

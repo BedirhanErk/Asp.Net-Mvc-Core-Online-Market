@@ -1,0 +1,66 @@
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12 mb-4 mt-3 ml-1">
+    <h2 class="mb-4 ml-1">
+        Products
+        <a class="ml-1 btn btn-primary" style="position:absolute;right:18px;width:100px" asp-controller="Product" asp-action="Create">Add <i style="margin-left:5px" class="fas fa-plus"></i></a>
+    </h2>
+
+    @if (Model.Products.Count > 0)
+    {
+        <table id="tbl2" class="mt-3 table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th style="width:30px">Make it Passive</th>
+                    <th>Id</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Brand</th>
+                    <th>Price</th>
+                    <th>Discounted Price</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Products)
+                {
+                    <tr>
+                        <td><a href="/Product/Delete/@x.Id" class="text-danger" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure you want to passive it?')"><strong>Passive</strong></a></td>
+                        <td><a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id">@x.Id</a></td>
+                        <td>
+                            <img src="~/img/@x.ImageUrl" alt="@x.Name" width="100" />
+                        </td>
+                        <td><a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id">@x.Name</a></td>
+                        <td><a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id">@x.Brand</a></td>
+                        <td><a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id">@x.Price</a></td>
+                        <td><a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id">@x.DiscountedPrice</a></td>
+                        <td><a asp-controller="Product" asp-action="Update" asp-route-id="@x.Id">@x.Stock</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <h4>NO PRODUCT</h4>
+        </div>
+    }
+</div>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+
+<script>
+    $('#tbl2').dataTable({});
+</script>
+

@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "ConfirmEmail";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<h1 style="margin-left:115px;margin-top:50px">Confirm Email</h1>
+<hr />
+<div class="alert alert-info" style="margin-left:115px;margin-right:110px">
+    @if (TempData["message"] != null)
+    {
+        @TempData["message"]
+    }
+</div>
+
+<a class="btn btn-primary" href="/Account/Login" style="margin-left:115px;margin-bottom:25px">Go to the Login Page.</a>
+
+

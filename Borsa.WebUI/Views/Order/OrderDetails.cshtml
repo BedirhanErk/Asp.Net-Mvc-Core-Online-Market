@@ -1,0 +1,50 @@
+﻿@model OrderModel
+@{
+    ViewData["Title"] = "OrderDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2 class="mt-3 ml-3">Update Shipping Status</h2>
+
+<div class="col-md-12 mt-3 ml-2">
+    <form asp-controller="Order" asp-action="OrderDetails" method="post">
+        <input type="hidden" name="categoryId" value="@Model.Id" />
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Name</label>
+            <div class="col-md-10">
+                <label class="col-md-2 col-form-label">@Model.FirstName @Model.LastName</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Email</label>
+            <div class="col-md-10">
+                <label class="col-md-2 col-form-label">@Model.Email</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Order Number</label>
+            <div class="col-md-10">
+                <label class="col-md-2 col-form-label">@Model.OrderNumber</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Order Date</label>
+            <div class="col-md-10">
+                <label class="col-md-2 col-form-label">@Model.OrderDate.ToString("dd/MM/yyyy")</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-2 col-form-label">Order State</label>
+            <div class="col-md-10">
+                <select asp-for="@Model.OrderState" class="form-control" asp-items="new SelectList(ViewBag.OrderState)"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-10 offset-md-2">
+                <button type="submit" value="Create" style="width:100px" class="btn btn-primary">Update</button>
+                <a asp-action="Index" asp-controller="Order" class="btn btn-warning" value="Cancel" style="width:100px">Cancel</a>
+            </div>
+        </div>      
+    </form>
+</div>

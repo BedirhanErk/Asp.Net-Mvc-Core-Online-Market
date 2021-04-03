@@ -1,0 +1,37 @@
+﻿@model ProductListModel
+
+<div class="newproducts-w3agile">
+    <div class="container">
+        <h3>POPULAR PRODUCTS</h3>
+        <div class="agile_top_brands_grids">
+            @foreach (var x in Model.Products)
+            {
+                @if (x.DiscountedPrice == x.Price)
+                {
+                    <div class="col-md-3 ban-bottom" style="margin-bottom:25px">
+                        <div class="ban-top">
+                            <a href="/HomePage/ProductDetails/@x.Id"><img src="~/img/@x.ImageUrl" class="img-responsive" alt="" /></a>
+                            <br />
+                            <p style="text-align:center">@x.Brand</p>
+                            <a style="text-align:center" href="/HomePage/ProductDetails/@x.Id"><p>@x.Name</p></a>
+                            <h4 style="text-align:center">@x.Price ₺</h4>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-3 ban-bottom" style="margin-bottom:25px">
+                        <div class="ban-top">
+                            <a href="/HomePage/ProductDetails/@x.Id"><img src="~/img/@x.ImageUrl" class="img-responsive" alt="" /></a>
+                            <br />
+                            <p style="text-align:center">@x.Brand</p>
+                            <a style="text-align:center" href="/HomePage/ProductDetails/@x.Id"><p>@x.Name</p></a>
+                            <h4 style="text-align:center">@x.DiscountedPrice ₺<s style="color:grey;margin-left:15px">@x.Price ₺</s></h4>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

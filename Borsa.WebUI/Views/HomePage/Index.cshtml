@@ -1,0 +1,30 @@
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+
+    @* Slider *@
+    <partial name="_Slider" />
+
+    @* Offers *@
+    @await Component.InvokeAsync("HomeMonth")
+
+    @* Gallery *@
+    @await Component.InvokeAsync("HomeGallery")
+
+    @* Category *@
+    <partial name="_HomeCategory" />
+
+    @* Offers *@
+    @await Component.InvokeAsync("HomeOffer")
+
+</body>
+</html>
+
+
+

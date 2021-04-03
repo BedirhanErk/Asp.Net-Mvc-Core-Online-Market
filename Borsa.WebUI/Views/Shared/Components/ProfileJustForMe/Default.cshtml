@@ -1,0 +1,37 @@
+﻿@model ProductListModel
+
+
+@foreach (var x in Model.Products)
+{
+    <div class="col-md-6 top_brand_left" style="margin-bottom:25px">
+        <div class="hover14 column">
+            <div class="agile_top_brand_left_grid">
+                <div class="agile_top_brand_left_grid_pos">
+                    <img src="~/home/images/offer.png" alt=" " class="img-responsive" />
+                </div>
+                <div class="agile_top_brand_left_grid1">
+                    <figure>
+                        <div class="snipcart-item block">
+                            <div class="snipcart-thumb">
+                                <a href="/HomePage/ProductDetails/@x.Id"><img title=" " style="width:50%" alt="@x.Name" src="~/img/@x.ImageUrl" /></a>
+                                <p>@x.Name</p>
+                                <h4>@x.Price ₺</h4>
+                            </div>
+                            <div class="snipcart-details top_brand_home_details">
+                                <a asp-controller="HomePage" asp-action="ProductDetails" asp-route-id="@x.Id" class="btn btn-warning btn-sm">Details</a>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <form asp-controller="Cart" asp-action="AddToCart" method="post" style="display:inline">
+                                        <input type="hidden" name="productId" value="@x.Id" />
+                                        <input type="hidden" name="quantity" value="1" />
+                                        <button type="submit" class="btn btn-primary btn-sm ml-3">Add To Cart</button>
+                                    </form>
+                                }
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+}

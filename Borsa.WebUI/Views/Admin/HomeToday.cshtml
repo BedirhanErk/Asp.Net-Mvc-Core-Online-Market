@@ -1,0 +1,61 @@
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "HomeToday";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="col-md-12 mb-4 mt-3 ml-1">
+    <h2 class="mb-4 ml-1">
+        Edit Today Offers
+    </h2>
+    <h5 class="mt-2 mb-3 ml-1">
+        There are <strong style="color:red">6</strong> offers of the day that can be displayed on the Home Page.
+    </h5>
+
+    @if (Model.Products.Count > 0)
+    {
+        <table id="tbl7" class="mt-3 table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Home Page Visibility</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.Products)
+                {
+                    <tr>
+                        <td>@x.Name</td>
+                        @if (x.HomeToday == true)
+                        {
+                            <td style="color:green"><a style="color:green" href="/Admin/UpdateToday/@x.Id">Active</a></td>
+                        }
+                        else
+                        {
+                            <td style="color:red"><a style="color:red" href="/Admin/UpdateToday/@x.Id">Passive</a></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning">
+            <h4>There are no products to display homepage here.</h4>
+        </div>
+    }
+</div>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl7').dataTable({});
+</script>

@@ -1,0 +1,37 @@
+﻿@model ProductListModel
+@{
+    ViewData["Title"] = "SearchProduct";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="products">
+        <div class="container">
+            <div class="col-md-4 products-left" style="margin-top:40px">
+                <div class="categories">
+                    <h2>Categories</h2>
+                    <ul class="cate">
+                        @await Component.InvokeAsync("CategoryList")
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8 products-right">
+                <div class="agile_top_brands_grids">
+                    <div class="row mb-5">
+                        @foreach (var product in Model.Products)
+                        {
+                            <partial name="_PartialProductList" for="@product" />
+                        }
+                    </div>                   
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</body>
+</html>
+

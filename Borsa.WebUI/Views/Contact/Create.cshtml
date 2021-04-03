@@ -1,0 +1,61 @@
+﻿@model ContactModel
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="about">
+        <div class="w3_agileits_contact_grids">
+            <div class="col-md-6 w3_agileits_contact_grid_left">
+                <div class="agile_map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2576.7542602938015!2d34.80523463093577!3d39.82281435412823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4080709a26e72b6d%3A0xc54bce6b462027db!2zQcWfYcSfxLFub2h1dGx1LCBNw7x6ZSBDZC4gMTAtMTIsIDY2MTAwIFlvemdhdCBNZXJrZXovWW96Z2F0!5e0!3m2!1str!2str!4v1614024367645!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="agileits_w3layouts_map_pos">
+                    <div class="agileits_w3layouts_map_pos1">
+                        <h3>Contact Info</h3>
+                        <p>
+                            Aşağınohutlu Mahallesi,Yozgat / Merkez.
+                        </p>
+                        <ul class="wthree_contact_info_address">
+                            <li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:erkilicbedirhan@gmail.com">erkilicbedirhan@gmail.com</a></li>
+                            <li><i class="fas fa-phone" aria-hidden="true"></i>(+90) 539 899 55 45</li>
+                        </ul>
+                        <div class="w3_agile_social_icons w3_agile_social_icons_contact">
+                            <ul>
+                                <li><a href="https://www.facebook.com/people/Bedirhan-Erk%C4%B1l%C4%B1%C3%A7/100051665255398" class="icon icon-cube agile_facebook"></a></li>
+                                <li><a href="https://www.instagram.com/erkilicbedirhan/?hl=tr" class="icon icon-cube agile_instagram"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 w3_agileits_contact_grid_right">
+                <h2 class="w3_agile_header">Leave a<span> Message</span></h2>
+
+                <form asp-controller="Contact" asp-action="Create" method="post">
+                    <span class="input input--ichiro">
+                        <input class="input__field input__field--ichiro" type="text" id="input-25" asp-for="Name" placeholder=" " required="" />
+                        <label class="input__label input__label--ichiro" for="input-25">
+                            <span class="input__label-content input__label-content--ichiro">Your Name</span>
+                        </label>
+                    </span>
+                    <span class="input input--ichiro">
+                        <input class="input__field input__field--ichiro" type="email" id="input-26" asp-for="Email" placeholder=" " required="" />
+                        <label class="input__label input__label--ichiro" for="input-26">
+                            <span class="input__label-content input__label-content--ichiro">Your Email</span>
+                        </label>
+                    </span>
+                    <textarea asp-for="Message" placeholder="Your message here..." required=""></textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</body>
+</html>
+

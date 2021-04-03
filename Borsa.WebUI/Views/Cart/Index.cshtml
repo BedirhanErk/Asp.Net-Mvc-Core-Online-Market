@@ -1,0 +1,79 @@
+﻿@model CartModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="checkout">
+        <div class="container">
+            <h1 style="margin-bottom:25px">Shopping Cart</h1>
+            <br />
+            @if (Model.CartItems.Count > 0)
+            {
+                <div class="checkout-right">
+                    <table class="timetable_sub">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        @foreach (var x in Model.CartItems)
+                        {
+                            <tr class="rem1">
+                                <td class="invert-image"><a href="/HomePage/ProductDetails/@x.ProductId"><img src="~/img/@x.ImageUrl" alt=" " style="width:25%" class="img-responsive" /></a></td>
+                                <td><a href="/HomePage/ProductDetails/@x.ProductId">@x.Name</a></td>
+                                <td class="invert">@x.DiscountedPrice ₺</td>
+                                <td class="invert">@x.Qunatity</td>
+                                <td>@(x.Qunatity * x.DiscountedPrice) ₺</td>
+                                <td>
+                                    <form asp-controller="Cart" asp-action="DeleteFromCart" method="post">
+                                        <input type="hidden" name="productId" value="@x.ProductId" />
+                                        <button type="submit" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-times fa-fw"></i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    No Product in Cart!
+                </div>
+                <a href="/HomePage/ProductList" class="btn btn-primary">Continue shopping</a>
+            }
+            <div class="checkout-left">
+                @if (Model.CartItems.Count > 0)
+                {
+                    <div class="checkout-left-basket">
+                        <a href="/Cart/Checkout"><h4>Checkout</h4></a>
+                        <ul>
+                            <li>Cart Total <span>@Model.TotalPrice().ToString("c") ₺</span></li>
+                            <li>Shipping  <span>Free </span></li>
+                            <li><i></i><span></span></li>
+                            <li><i></i> <span></span></li>
+                            <li>Order Total  <span>@Model.TotalPrice().ToString("c") ₺</span></li>
+                        </ul>
+                    </div>
+                    <div class="checkout-right-basket">
+                        <a href="/HomePage/Index"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+                    </div>
+                    <div class="clearfix"> </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

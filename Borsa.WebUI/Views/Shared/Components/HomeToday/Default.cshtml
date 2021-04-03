@@ -1,0 +1,148 @@
+﻿@model ProductListModel
+
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
+        <div class="agile-tp">
+            <h5>Special offers for today</h5>
+            <p class="w3l-ad">You can find our special offers for today, below.</p>
+        </div>
+
+        <div class="agile_top_brands_grids">
+            @foreach (var x in Model.Products)
+            {
+                <div class="col-md-4 top_brand_left" style="margin-bottom:25px">
+                    <div class="hover14 column">
+                        @if (x.DiscountedPrice == x.Price)
+                        {
+                            <div class="agile_top_brand_left_grid">
+                                <form asp-controller="Cart" asp-action="AddToWishlist" method="post" style="display:inline">
+                                    <input type="hidden" name="productId" value="@x.Id" />
+                                    <button type="submit"><i class="fas fa-heart" style="color:red"></i></button>
+                                </form>
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="/HomePage/ProductDetails/@x.Id"><img title=" " style="width:50%" alt="@x.Name" src="~/img/@x.ImageUrl" /></a>
+                                                <p>@x.Name</p>
+                                                <h4>@x.Price ₺</h4>
+                                            </div>
+                                            <div class="snipcart-details top_brand_home_details">
+                                                <a asp-controller="HomePage" asp-action="ProductDetails" asp-route-id="@x.Id" class="btn btn-warning btn-sm">Details</a>
+
+                                                <form asp-controller="Cart" asp-action="AddToCart" method="post" style="display:inline">
+                                                    <input type="hidden" name="productId" value="@x.Id" />
+                                                    <input type="hidden" name="quantity" value="1" />
+                                                    <button type="submit" class="btn btn-primary btn-sm ml-3">Add To Cart</button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="agile_top_brand_left_grid">
+                                <form asp-controller="Cart" asp-action="AddToWishlist" method="post" style="display:inline">
+                                    <input type="hidden" name="productId" value="@x.Id" />
+                                    <button type="submit"><i class="fas fa-heart" style="color:red"></i></button>
+                                </form>
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="~/home/images/offer.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="/HomePage/ProductDetails/@x.Id"><img title=" " style="width:50%" alt="@x.Name" src="~/img/@x.ImageUrl" /></a>
+                                                <p>@x.Name</p>
+                                                <h4>@x.DiscountedPrice ₺<span>@x.Price ₺</span></h4>
+                                            </div>
+                                            <div class="snipcart-details top_brand_home_details">
+                                                <a asp-controller="HomePage" asp-action="ProductDetails" asp-route-id="@x.Id" class="btn btn-warning btn-sm">Details</a>
+
+                                                <form asp-controller="Cart" asp-action="AddToCart" method="post" style="display:inline">
+                                                    <input type="hidden" name="productId" value="@x.Id" />
+                                                    <input type="hidden" name="quantity" value="1" />
+                                                    <button type="submit" class="btn btn-primary btn-sm ml-3">Add To Cart</button>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+}
+else
+{
+    <div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
+        <div class="agile-tp">
+            <h5>Special offers for today</h5>
+            <p class="w3l-ad">You can find our special offers for today, below.</p>
+        </div>
+
+        <div class="agile_top_brands_grids">
+            @foreach (var x in Model.Products)
+            {
+                <div class="col-md-4 top_brand_left" style="margin-bottom:25px">
+                    <div class="hover14 column">
+                        @if (x.DiscountedPrice == x.Price)
+                        {
+                            <div class="agile_top_brand_left_grid">
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="/HomePage/ProductDetails/@x.Id"><img title=" " style="width:50%" alt="@x.Name" src="~/img/@x.ImageUrl" /></a>
+                                                <p>@x.Name</p>
+                                                <h4>@x.Price ₺</h4>
+                                            </div>
+                                            <div class="snipcart-details top_brand_home_details">
+                                                <a asp-controller="HomePage" asp-action="ProductDetails" asp-route-id="@x.Id" class="btn btn-warning btn-sm">Details</a>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="agile_top_brand_left_grid">
+                                <div class="agile_top_brand_left_grid_pos">
+                                    <img src="~/home/images/offer.png" alt=" " class="img-responsive" />
+                                </div>
+                                <div class="agile_top_brand_left_grid1">
+                                    <figure>
+                                        <div class="snipcart-item block">
+                                            <div class="snipcart-thumb">
+                                                <a href="/HomePage/ProductDetails/@x.Id"><img title=" " style="width:50%" alt="@x.Name" src="~/img/@x.ImageUrl" /></a>
+                                                <p>@x.Name</p>
+                                                <h4>@x.DiscountedPrice ₺<span>@x.Price ₺</span></h4>
+                                            </div>
+                                            <div class="snipcart-details top_brand_home_details">
+                                                <a asp-controller="HomePage" asp-action="ProductDetails" asp-route-id="@x.Id" class="btn btn-warning btn-sm">Details</a>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+}
+
