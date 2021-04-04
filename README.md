@@ -134,4 +134,4 @@ Son olarak nasıl kurulum yapıp kullanabileceğinizden bahsedicem. Kurulum gaye
 
 *HomePage'deki template w3layouts'tan, Admin paneldeki template ise adminlte'den alınmıştır.*
 
-Herhangi bir sorun ile karşılaşırsanız Mail: erkilicbedirhan@gmail.com
+Proje geliştirmelerine devam etmekteyim herhangi bir öneriniz var ise  veya herhangi bir sorun ile karşılaşırsanız Mail: erkilicbedirhan@gmail.com
