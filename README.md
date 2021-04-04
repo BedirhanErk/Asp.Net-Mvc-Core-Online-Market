@@ -8,7 +8,7 @@ Projede 3 kısım vardır
 
 1. Front End 
 2. User Area 
-3- Admin Area
+3. Admin Area
 
 Projede Şu eklentilerde kullanılmıştır.
 
