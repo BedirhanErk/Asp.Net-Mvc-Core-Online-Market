@@ -1,4 +1,4 @@
-# Asp.Net-Mvc-Core-Virtual-Market
+# Asp.Net-Mvc-Core-Online-Market
 ## Kodluyoruz Bitirme Projesi
 
  Proje Asp.Net Mvc Core ile geliştirilmiştir. Projede katmanlı mimari yapısı kullanılmıştır. Business katmanı, DataAccess katmanı, Entities katmanı ve Web katmanı bulunmaktadır.
